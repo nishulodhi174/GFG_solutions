@@ -43,22 +43,21 @@ class GFG {
 class Solution
 {
     //Function to delete middle element of a stack.
+    public void delete(Stack<Integer>s,int sizeOfStack,int idx){
+        if(idx==sizeOfStack){
+            return;
+        }
+        int temp=s.pop();
+        delete(s,sizeOfStack,idx+1);
+        if(idx==sizeOfStack/2+1){
+            return;
+        }
+        else{
+            s.push(temp);
+        }
+    }
     public void deleteMid(Stack<Integer>s,int sizeOfStack){
-        ArrayList<Integer> list = new ArrayList<>();
-        while(!s.isEmpty()){
-            list.add(s.pop());
-        }
-        Stack<Integer> s1 = new Stack<>();
-        int mid = list.size()/2;
-        for (int i = 0;i<list.size();i++){
-            if(i == mid){
-                continue;
-            }
-            s1.push(list.get(i));
-        }
-        while(!s1.isEmpty()){
-            s.push(s1.pop());
-        }
+        delete(s,sizeOfStack,1);
     } 
 }
 
